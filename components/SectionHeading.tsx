@@ -1,51 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
-  eyebrow: string;
+  label: string;
   title: string;
   description?: string;
-  number?: string;
-  className?: string;
 };
 
-export function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  number,
-  className
-}: SectionHeadingProps) {
+export function SectionHeading({ label, title, description }: SectionHeadingProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 42 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={cn("mb-12 flex flex-col gap-4 md:mb-16", className)}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="mb-8"
     >
-      <div className="flex items-center gap-4">
-        {number ? (
-          <span className="text-5xl font-black tracking-tight text-blue-500/20 md:text-7xl">
-            {number}
-          </span>
-        ) : null}
-        <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
-          {eyebrow}
-        </span>
-      </div>
-      <div className="max-w-3xl">
-        <h2 className="text-4xl font-black tracking-tight text-slate-950 dark:text-white md:text-6xl">
-          {title}
-        </h2>
-        {description ? (
-          <p className="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-300">
-            {description}
-          </p>
-        ) : null}
-      </div>
+      <p className="mb-3 text-sm font-semibold text-[#3182F6]">{label}</p>
+      <h2 className="text-3xl font-extrabold tracking-tight text-[#111827] md:text-5xl">
+        {title}
+      </h2>
+      {description ? (
+        <p className="mt-4 max-w-2xl text-lg font-light leading-8 text-[#6B7280]">
+          {description}
+        </p>
+      ) : null}
     </motion.div>
   );
 }

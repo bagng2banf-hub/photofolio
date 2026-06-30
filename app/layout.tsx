@@ -2,61 +2,42 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { MotionProvider } from "@/components/MotionProvider";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lee-dayeon.dev"),
+  metadataBase: new URL("https://photofolio.vercel.app"),
   title: {
-    default: "LEE DAYEON | Student Developer Portfolio",
-    template: "%s | LEE DAYEON"
+    default: "LEE DA YEON | Portfolio",
+    template: "%s | LEE DA YEON"
   },
   description:
-    "미래를 만드는 학생 개발자 LEE DAYEON의 포트폴리오입니다. AI, 웹 개발, 앱 개발 프로젝트와 성장 목표를 소개합니다.",
-  keywords: [
-    "LEE DAYEON",
-    "이다연",
-    "Student Developer",
-    "AI Creator",
-    "Portfolio",
-    "Next.js"
-  ],
-  authors: [{ name: "LEE DAYEON" }],
-  creator: "LEE DAYEON",
+    "두리중학교에 재학 중인 이다연의 포트폴리오 웹사이트입니다.",
+  keywords: ["LEE DA YEON", "이다연", "포트폴리오", "학생 포트폴리오"],
+  authors: [{ name: "Lee Da Yeon" }],
+  creator: "Lee Da Yeon",
   openGraph: {
-    title: "LEE DAYEON | Student Developer Portfolio",
-    description:
-      "AI와 웹 기술로 미래를 만드는 학생 개발자 LEE DAYEON의 포트폴리오.",
-    url: "https://lee-dayeon.dev",
-    siteName: "LEE DAYEON Portfolio",
+    title: "LEE DA YEON | Portfolio",
+    description: "두리중학교에 재학 중인 이다연의 포트폴리오 웹사이트입니다.",
+    url: "https://photofolio.vercel.app",
+    siteName: "LEE DA YEON Portfolio",
     locale: "ko_KR",
     type: "website"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "LEE DAYEON | Student Developer Portfolio",
-    description:
-      "AI와 웹 기술로 미래를 만드는 학생 개발자 LEE DAYEON의 포트폴리오."
   }
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#3B82F6"
+  themeColor: "#2563EB"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko">
       <body>
-        <ThemeProvider>
-          <MotionProvider>
-            <ScrollProgress />
-            <Header />
-            {children}
-          </MotionProvider>
-        </ThemeProvider>
+        <MotionProvider>
+          <Header />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );
