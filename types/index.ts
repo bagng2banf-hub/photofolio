@@ -5,14 +5,14 @@ export type NavItem = {
 };
 
 export type LearningItem = {
-  icon: string;
+  key: string;
   title: string;
   description: string;
 };
 
 export type Project = {
   id: number;
-  icon: string;
+  key: string;
   title: string;
   summary: string;
   reason: string;
@@ -20,7 +20,7 @@ export type Project = {
 };
 
 export type ContactLink = {
-  icon: string;
+  key: string;
   label: string;
   value: string;
   href: string;

@@ -27,11 +27,11 @@ export function Header() {
         transition={{ duration: 0.45 }}
         className={cn(
           "mx-auto flex h-16 max-w-6xl items-center justify-between px-5 transition-all duration-300",
-          scrolled && "backdrop-blur-md"
+          scrolled && "shadow-[0_12px_32px_rgba(37,99,235,0.28)] backdrop-blur-md"
         )}
       >
         <a href="#hero" className="text-lg font-extrabold tracking-tight" onClick={() => setOpen(false)}>
-          LEE DA YEON
+          LEE DAYEON
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
