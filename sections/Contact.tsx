@@ -1,15 +1,22 @@
 "use client";
 
 import { Github, Instagram, Mail, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { contactLinks, techStack } from "@/data/portfolio";
-import { slideLeft, slideRight } from "@/lib/motion";
+import { fadeUp, slideLeft, slideRight, staggerContainer } from "@/lib/motion";
 
 const contactIcons = {
   email: Mail,
   instagram: Instagram,
   github: Github
+};
+
+const contactMotion = {
+  email: slideLeft,
+  instagram: slideRight,
+  github: fadeUp
 };
 
 export function Contact() {
@@ -25,14 +32,26 @@ export function Contact() {
 
         <div className="grid gap-5 lg:grid-cols-[1fr_0.72fr]">
           <AnimatedCard variants={slideLeft}>
-            <div className="grid gap-4 md:grid-cols-3">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, margin: "-80px" }}
+              className="grid gap-4 md:grid-cols-3"
+            >
               {contactLinks.map((link) => {
                 const Icon = contactIcons[link.key as keyof typeof contactIcons] ?? Mail;
+                const isExternal = link.href.startsWith("http");
 
                 return (
-                  <a
+                  <motion.a
                     key={link.label}
                     href={link.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    variants={contactMotion[link.key as keyof typeof contactMotion] ?? fadeUp}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     className="group rounded-[20px] bg-[#F8FAFC] p-5 transition hover:bg-[#EFF6FF]"
                   >
                     <span className="grid size-11 place-items-center rounded-2xl bg-white text-[#2563EB] shadow-sm transition group-hover:scale-105">
@@ -42,10 +61,10 @@ export function Contact() {
                     <p className="mt-2 break-all text-sm font-semibold text-[#111827] transition group-hover:text-[#2563EB] group-hover:underline group-hover:decoration-[#93C5FD] group-hover:underline-offset-4">
                       {link.value}
                     </p>
-                  </a>
+                  </motion.a>
                 );
               })}
-            </div>
+            </motion.div>
           </AnimatedCard>
 
           <AnimatedCard variants={slideRight} className="bg-[#2563EB] text-white">
