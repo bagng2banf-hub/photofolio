@@ -50,7 +50,12 @@ export function useGsapScrollLift(
       gsap.registerPlugin(ScrollTrigger);
 
       const context = gsap.context(() => {
-        const elements = gsap.utils.toArray<HTMLElement>(selector);
+        const select = gsap.utils.selector(root);
+        const elements = select<HTMLElement>(selector);
+
+        if (elements.length === 0) {
+          return;
+        }
 
         gsap.fromTo(
           elements,

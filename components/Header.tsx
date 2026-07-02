@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { navItems } from "@/data/portfolio";
 import { useActiveSection } from "@/hooks/useActiveSection";
@@ -10,7 +10,8 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const activeSection = useActiveSection(navItems.map((item) => item.id));
+  const sectionIds = useMemo(() => navItems.map((item) => item.id), []);
+  const activeSection = useActiveSection(sectionIds);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);

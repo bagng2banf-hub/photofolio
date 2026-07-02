@@ -38,44 +38,46 @@ export function Projects() {
             const Icon = projectIcons[project.key as keyof typeof projectIcons] ?? LayoutPanelTop;
 
             return (
-              <motion.article
+              <div
                 key={project.id}
-                variants={fadeUp}
-                whileHover={{ y: -10, scale: 1.025 }}
-                className={`project-card rounded-[24px] border border-[#E5E7EB] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_28px_78px_rgba(49,130,246,0.16)] ${
-                  index === 2 ? "lg:col-span-2" : ""
-                }`}
+                className={`project-card ${index === 2 ? "lg:col-span-2" : ""}`}
               >
-                <div className="flex items-start gap-4">
-                  <motion.span
-                    whileHover={{ rotate: 3, scale: 1.1 }}
-                    className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#EFF6FF] text-[#2563EB]"
-                  >
-                    <Icon size={22} />
-                  </motion.span>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#111827]">{project.title}</h3>
-                    <p className="mt-3 text-sm font-light leading-7 text-[#6B7280]">
-                      {project.summary}
-                    </p>
+                <motion.article
+                  variants={fadeUp}
+                  whileHover={{ y: -10, scale: 1.025 }}
+                  className="h-full rounded-[24px] border border-[#E5E7EB] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_28px_78px_rgba(49,130,246,0.16)]"
+                >
+                  <div className="flex items-start gap-4">
+                    <motion.span
+                      whileHover={{ rotate: 3, scale: 1.1 }}
+                      className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#EFF6FF] text-[#2563EB]"
+                    >
+                      <Icon size={22} />
+                    </motion.span>
+                    <div>
+                      <h3 className="text-2xl font-bold text-[#111827]">{project.title}</h3>
+                      <p className="mt-3 text-sm font-light leading-7 text-[#6B7280]">
+                        {project.summary}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="mt-6 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-[18px] border border-transparent bg-[#F8FAFC] p-4 transition hover:border-[#BFDBFE]">
-                    <p className="text-xs font-semibold text-[#3182F6]">왜 만들었나요</p>
-                    <p className="mt-1 text-sm font-normal leading-6 text-[#374151]">
-                      {project.reason}
-                    </p>
+                  <div className="mt-6 grid gap-3 md:grid-cols-2">
+                    <div className="rounded-[18px] border border-transparent bg-[#F8FAFC] p-4 transition hover:border-[#BFDBFE]">
+                      <p className="text-xs font-semibold text-[#3182F6]">왜 만들었나요</p>
+                      <p className="mt-1 text-sm font-normal leading-6 text-[#374151]">
+                        {project.reason}
+                      </p>
+                    </div>
+                    <div className="rounded-[18px] border border-transparent bg-[#F8FAFC] p-4 transition hover:border-[#BFDBFE]">
+                      <p className="text-xs font-semibold text-[#3182F6]">하면서 배운 것</p>
+                      <p className="mt-1 text-sm font-normal leading-6 text-[#374151]">
+                        {project.learned}
+                      </p>
+                    </div>
                   </div>
-                  <div className="rounded-[18px] border border-transparent bg-[#F8FAFC] p-4 transition hover:border-[#BFDBFE]">
-                    <p className="text-xs font-semibold text-[#3182F6]">하면서 배운 것</p>
-                    <p className="mt-1 text-sm font-normal leading-6 text-[#374151]">
-                      {project.learned}
-                    </p>
-                  </div>
-                </div>
-              </motion.article>
+                </motion.article>
+              </div>
             );
           })}
         </motion.div>
