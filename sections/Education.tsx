@@ -2,31 +2,28 @@
 
 import { AnimatedCard } from "@/components/AnimatedCard";
 import { SectionHeading } from "@/components/SectionHeading";
-import { award, educationItems } from "@/data/portfolio";
+import { educationAwardItems } from "@/data/portfolio";
 
 export function Education() {
   return (
     <section id="education" className="bg-[#F8FAFC] px-5 py-20">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading label="학력 및 수상" title="학력 및 수상" />
-        <AnimatedCard className="max-w-2xl">
-          <div className="flex flex-col gap-5 md:flex-row md:items-center">
-            {educationItems.map((item, index) => (
-              <div key={item.school} className="flex flex-1 items-center gap-6">
-                <div className="flex-1 rounded-[20px] bg-[#F8FAFC] p-5">
-                  <p className="text-lg font-extrabold text-[#111827]">{item.school}</p>
-                  <p className="mt-2 text-sm font-light text-[#6B7280]">{item.status}</p>
-                </div>
-                {index < educationItems.length - 1 ? (
-                  <span className="hidden text-2xl font-light text-[#60A5FA] md:block">→</span>
-                ) : null}
+        <SectionHeading number="02" label="학력 및 수상" title="학력 및 수상" />
+        <AnimatedCard className="max-w-4xl">
+          <div className="grid gap-4 md:grid-cols-3">
+            {educationAwardItems.map((item) => (
+              <div
+                key={item.title}
+                className="relative overflow-hidden rounded-[20px] bg-[#F8FAFC] p-5"
+              >
+                <div className="absolute inset-y-0 left-0 w-1 bg-[#3182F6]" />
+                <span className="grid size-12 place-items-center rounded-full bg-[#EFF6FF] text-2xl">
+                  {item.icon}
+                </span>
+                <h3 className="mt-5 text-lg font-semibold text-[#111827]">{item.title}</h3>
+                <p className="mt-2 text-base font-light text-[#6B7280]">{item.value}</p>
               </div>
             ))}
-          </div>
-          <div className="my-7 h-px bg-[#E5E7EB]" />
-          <div>
-            <p className="text-lg font-bold text-[#111827]">{award.title}</p>
-            <p className="mt-2 text-2xl font-bold text-[#3182F6]">{award.result}</p>
           </div>
         </AnimatedCard>
       </div>
