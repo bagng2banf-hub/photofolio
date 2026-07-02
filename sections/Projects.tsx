@@ -2,9 +2,10 @@
 
 import { CalendarDays, LayoutPanelTop, Shirt } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { projects } from "@/data/portfolio";
+import { useGsapScrollLift } from "@/hooks/useGsapScrollLift";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const projectIcons = {
@@ -15,65 +16,12 @@ const projectIcons = {
 
 export function Projects() {
   const sectionRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const root = sectionRef.current;
-
-    if (!root) {
-      return;
-    }
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-
-    if (prefersReducedMotion || isMobile) {
-      return;
-    }
-
-    let cleanup: (() => void) | undefined;
-    let cancelled = false;
-
-    const setupScrollMotion = async () => {
-      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
-        import("gsap"),
-        import("gsap/ScrollTrigger")
-      ]);
-
-      if (cancelled) {
-        return;
-      }
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      const context = gsap.context(() => {
-        const cards = gsap.utils.toArray<HTMLElement>(".project-card");
-
-        gsap.fromTo(
-          cards,
-          { y: 24 },
-          {
-            y: -8,
-            ease: "none",
-            scrollTrigger: {
-              trigger: root,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 0.8
-            }
-          }
-        );
-      }, root);
-
-      cleanup = () => context.revert();
-    };
-
-    void setupScrollMotion();
-
-    return () => {
-      cancelled = true;
-      cleanup?.();
-    };
-  }, []);
+  useGsapScrollLift(sectionRef, {
+    selector: ".project-card",
+    fromY: 24,
+    toY: -8,
+    scrub: 0.8
+  });
 
   return (
     <section ref={sectionRef} id="projects" className="bg-[#F8FAFC] px-5 py-24">
