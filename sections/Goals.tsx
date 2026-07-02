@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle2, HeartHandshake, Wrench } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
 import { goalItems } from "@/data/portfolio";
 import { fadeUp, floating, staggerContainer } from "@/lib/motion";
@@ -13,11 +13,13 @@ const goalIcons = {
 };
 
 export function Goals() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="goals" className="relative overflow-hidden bg-white px-5 py-24">
       <motion.div
         aria-hidden
-        animate={floating}
+        animate={shouldReduceMotion ? undefined : floating}
         className="pointer-events-none absolute right-[-3rem] top-16 h-48 w-48 rounded-full bg-[#EFF6FF] blur-3xl"
       />
       <div className="relative z-10 mx-auto max-w-6xl">

@@ -1,10 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { RippleButton } from "@/components/RippleButton";
 import { buttonItem, buttonStagger, fadeUp, floating, heroTitle } from "@/lib/motion";
 
 export function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="hero"
@@ -12,16 +14,20 @@ export function Hero() {
     >
       <motion.div
         aria-hidden
-        animate={floating}
+        animate={shouldReduceMotion ? undefined : floating}
         className="pointer-events-none absolute left-[8%] top-24 h-44 w-44 rounded-full bg-white/10 blur-3xl"
       />
       <motion.div
         aria-hidden
-        animate={{
-          y: [0, 12, 0],
-          x: [0, -8, 0],
-          transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut" }
-        }}
+        animate={
+          shouldReduceMotion
+            ? undefined
+            : {
+                y: [0, 12, 0],
+                x: [0, -8, 0],
+                transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut" }
+              }
+        }
         className="pointer-events-none absolute bottom-16 right-[10%] h-52 w-52 rounded-full bg-[#60A5FA]/20 blur-3xl"
       />
 
