@@ -31,7 +31,7 @@ export function Header() {
         )}
       >
         <a href="#hero" className="text-lg font-extrabold tracking-tight" onClick={() => setOpen(false)}>
-          DAYEON
+          LEE DA YEON
         </a>
 
         <div className="hidden items-center gap-1 md:flex">

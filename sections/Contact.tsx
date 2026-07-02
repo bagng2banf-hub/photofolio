@@ -10,8 +10,8 @@ export function Contact() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="연락하기"
-          title="Contact"
-          description="문의는 이메일 또는 인스타그램으로 부탁드립니다."
+          title="연락하기"
+          description={"문의는 이메일 또는 인스타그램으로\n편하게 연락 부탁드립니다."}
         />
         <AnimatedCard className="max-w-2xl">
           <div className="space-y-5">

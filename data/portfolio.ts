@@ -2,16 +2,9 @@ import type { NavItem, Project } from "@/types";
 
 export const navItems: NavItem[] = [
   { label: "소개", href: "#about", id: "about" },
-  { label: "경력", href: "#experience", id: "experience" },
+  { label: "배우는 기술", href: "#learning", id: "learning" },
   { label: "프로젝트", href: "#projects", id: "projects" },
   { label: "연락하기", href: "#contact", id: "contact" }
-];
-
-export const profileInfo = [
-  { label: "이름", value: "이다연" },
-  { label: "학교", value: "두리중학교 재학" },
-  { label: "관심 분야", value: "웹사이트 제작, 기능 개선" },
-  { label: "거주 지역", value: "대전" }
 ];
 
 export const educationItems = [
@@ -19,51 +12,52 @@ export const educationItems = [
   { school: "두리중학교", status: "재학 중" }
 ];
 
-export const experienceItems = [
-  {
-    title: "Python",
-    points: ["기초 문법", "간단한 프로그램 제작"]
-  },
-  {
-    title: "Codex",
-    points: ["웹사이트 제작", "기능 수정", "오류 개선"]
-  }
-];
-
 export const award = {
   title: "행복장애이해 IT 대회",
   result: "은상"
 };
 
+export const learningItems = [
+  {
+    title: "Python",
+    points: ["기초 문법 공부", "간단한 프로그램 만들기"]
+  },
+  {
+    title: "Codex",
+    points: ["웹사이트 만들기", "기능 수정하기"]
+  },
+  {
+    title: "HTML · CSS",
+    points: ["웹페이지 구조 이해", "간단한 화면 꾸미기"]
+  }
+];
+
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Portfolio Website",
-    summary: "저를 소개하기 위해 만든 반응형 포트폴리오 웹사이트",
-    tech: ["Next.js", "TypeScript", "TailwindCSS"]
+    title: "MoodFit",
+    summary: "옷차림을 추천하는 아이디어를 웹사이트로 만들어 본 프로젝트입니다."
   },
   {
     id: 2,
-    title: "MoodFit",
-    summary: "사용자에게 어울리는 코디를 추천하는 서비스",
-    tech: ["Next.js", "React", "AI"]
+    title: "ONDO",
+    summary: "일정과 약속을 조금 더 편리하게 관리할 수 있도록 기획한 프로젝트입니다."
   },
   {
     id: 3,
-    title: "ONDO",
-    summary: "관계와 일정을 더 편하게 관리하기 위한 서비스",
-    tech: ["React", "Next.js", "OpenAI"]
+    title: "Portfolio",
+    summary: "저를 소개하기 위해 직접 만든 포트폴리오 웹사이트입니다."
   }
 ];
 
 export const contactLinks = [
   {
-    label: "이메일",
+    label: "Email",
     value: "bagng2banf@gmail.com",
     href: "mailto:bagng2banf@gmail.com"
   },
   {
-    label: "인스타그램",
+    label: "Instagram",
     value: "_daue0n",
     href: "https://instagram.com/_daue0n"
   }

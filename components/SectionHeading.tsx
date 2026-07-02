@@ -22,7 +22,7 @@ export function SectionHeading({ label, title, description }: SectionHeadingProp
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 max-w-2xl text-lg font-light leading-8 text-[#6B7280]">
+        <p className="mt-4 max-w-2xl whitespace-pre-line text-lg font-light leading-8 text-[#6B7280]">
           {description}
         </p>
       ) : null}

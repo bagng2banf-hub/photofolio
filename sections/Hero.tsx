@@ -25,10 +25,19 @@ export function Hero() {
           {"안녕하세요.\n여러분들께 저를 소개하겠습니다."}
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.18 }}
+          className="mt-6 whitespace-pre-line text-base font-light leading-8 text-white/85 md:text-lg"
+        >
+          {"새로운 것을 배우는 것을 좋아하고,\n직접 만들어 보며 경험을 쌓고 있는\n중학교 1학년 학생입니다."}
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.22 }}
+          transition={{ duration: 0.5, delay: 0.28 }}
           className="mt-10 flex flex-wrap justify-center gap-3"
         >
           <RippleButton href="#about">저를 소개합니다</RippleButton>

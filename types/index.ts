@@ -8,5 +8,4 @@ export type Project = {
   id: number;
   title: string;
   summary: string;
-  tech: string[];
 };
