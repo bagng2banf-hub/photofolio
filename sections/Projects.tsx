@@ -21,13 +21,13 @@ export function Projects() {
               </p>
               <div className="mt-6 space-y-4 rounded-[18px] bg-[#F8FAFC] p-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#3182F6]">만든 이유</p>
+                  <p className="text-xs font-semibold text-[#3182F6]">왜 만들었나요</p>
                   <p className="mt-1 text-sm font-normal leading-6 text-[#374151]">
                     {project.reason}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-[#3182F6]">배운 점</p>
+                  <p className="text-xs font-semibold text-[#3182F6]">하면서 배운 것</p>
                   <p className="mt-1 text-sm font-normal leading-6 text-[#374151]">
                     {project.learned}
                   </p>

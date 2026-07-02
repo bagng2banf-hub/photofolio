@@ -10,9 +10,9 @@ export function Contact() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           number="06"
-          label="연락하기"
-          title="연락하기"
-          description={"문의는 이메일 또는 인스타그램으로\n편하게 연락 부탁드립니다."}
+          label="SNS"
+          title="SNS"
+          description={"이메일 또는 인스타그램으로\n편하게 연락 부탁드립니다."}
         />
         <div className="grid max-w-3xl gap-5 md:grid-cols-2">
           {contactLinks.map((link, index) => (

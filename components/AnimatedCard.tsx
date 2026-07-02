@@ -17,7 +17,7 @@ export function AnimatedCard({
     <motion.div
       initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-80px" }}
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4, scale: 1.02 }}
       className={cn(

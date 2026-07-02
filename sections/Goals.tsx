@@ -26,12 +26,12 @@ export function Goals() {
               key={goal.title}
               initial={{ opacity: 0, y: 26 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: false, margin: "-80px" }}
               transition={{ duration: 0.55, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4, scale: 1.02 }}
               className="rounded-[24px] border border-[#E5E7EB] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.06)]"
             >
-              <span className="grid size-12 place-items-center rounded-full bg-[#EFF6FF] text-2xl">
+              <span className="grid size-11 place-items-center rounded-full bg-[#EFF6FF] text-xl">
                 {goal.icon}
               </span>
               <h3 className="mt-5 text-lg font-semibold text-[#111827]">{goal.title}</h3>

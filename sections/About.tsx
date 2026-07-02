@@ -27,8 +27,8 @@ export function About() {
 
         <AnimatedCard className="w-full lg:max-w-sm lg:justify-self-end">
           <div className="mb-6">
-            <p className="text-sm font-light text-[#6B7280]">Profile</p>
-            <h3 className="mt-1 text-2xl font-bold text-[#111827]">이다연</h3>
+            <p className="text-sm font-light text-[#6B7280]">간단한 소개</p>
+            <h3 className="mt-1 text-2xl font-bold text-[#111827]">이다연입니다</h3>
           </div>
           <div className="space-y-3">
             {profileItems.map((item) => (
@@ -36,7 +36,7 @@ export function About() {
                 key={item.label}
                 className="flex items-start gap-4 rounded-[18px] bg-[#F8FAFC] p-4"
               >
-                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#EFF6FF] text-xl">
+                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#EFF6FF] text-lg">
                   {item.icon}
                 </span>
                 <div>

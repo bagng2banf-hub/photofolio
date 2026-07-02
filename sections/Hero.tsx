@@ -5,15 +5,15 @@ import { RippleButton } from "@/components/RippleButton";
 
 export function Hero() {
   return (
-    <section id="hero" className="bg-[#2563EB] px-5 pt-32 text-white md:pt-36">
-      <div className="mx-auto flex min-h-[68vh] max-w-6xl flex-col items-center justify-center text-center">
+    <section id="hero" className="bg-[#2563EB] px-5 pb-20 pt-32 text-white md:pb-24 md:pt-36">
+      <div className="mx-auto flex min-h-[78vh] max-w-6xl flex-col items-center justify-center text-center">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full text-[17vw] font-extrabold leading-none tracking-[-0.08em] md:text-[8.8rem] lg:text-[10rem]"
+          className="w-full text-[16vw] font-extrabold leading-none tracking-[-0.08em] md:text-[8.4rem] lg:text-[9.5rem]"
         >
-          LEE DA YEON
+          LEE DAYEON
         </motion.h1>
 
         <motion.p
@@ -38,7 +38,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.28 }}
-          className="mt-10 flex flex-wrap justify-center gap-3"
+          className="mt-10 flex flex-wrap justify-center gap-3 pb-2"
         >
           <RippleButton href="#about">저를 소개합니다</RippleButton>
           <RippleButton href="#projects" variant="secondary">

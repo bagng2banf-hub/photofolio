@@ -14,13 +14,13 @@ export function SectionHeading({ label, title, description, number }: SectionHea
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-80px" }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className="mb-8"
     >
       <div className="mb-3 flex items-center gap-3">
         {number ? (
-          <span className="text-4xl font-extrabold leading-none text-[#3182F6]/20 md:text-5xl">
+          <span className="text-4xl font-extrabold leading-none text-[#2563EB]/55 md:text-5xl">
             {number}
           </span>
         ) : null}
