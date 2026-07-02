@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
 import { timelineItems } from "@/data/portfolio";
+import { blurReveal } from "@/lib/motion";
 
 const accentClasses = [
   "bg-[#EFF6FF] text-[#2563EB]",
@@ -18,8 +19,20 @@ export function Education() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading number="02" label="연혁" title="학력 및 수상" />
 
-        <div className="relative mt-12">
-          <div className="absolute bottom-0 left-6 top-0 w-px bg-[#CBD5E1] md:left-1/2 md:-translate-x-1/2" />
+        <motion.div
+          variants={blurReveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, margin: "-80px" }}
+          className="relative mt-12"
+        >
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="absolute bottom-0 left-6 top-0 w-px origin-top bg-[#CBD5E1] md:left-1/2 md:-translate-x-1/2"
+          />
           <div className="space-y-7 md:space-y-3">
             {timelineItems.map((item, index) => {
               const isLeft = index % 2 === 0;
@@ -27,10 +40,10 @@ export function Education() {
               return (
                 <motion.div
                   key={`${item.year}-${item.title}`}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   viewport={{ once: false, margin: "-80px" }}
-                  transition={{ duration: 0.55, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.55, delay: index * 0.07, ease: "easeOut" }}
                   className="relative grid gap-4 pl-16 md:grid-cols-[1fr_72px_1fr] md:items-center md:pl-0"
                 >
                   <div className={isLeft ? "md:col-start-1" : "md:col-start-3"}>
@@ -47,13 +60,14 @@ export function Education() {
                   </div>
 
                   <div className="absolute left-0 top-5 md:static md:col-start-2 md:grid md:place-items-center">
-                    <span
+                    <motion.span
+                      whileHover={{ scale: 1.1 }}
                       className={`grid size-12 place-items-center rounded-full border-4 border-[#F8FAFC] text-xl shadow-sm ${
                         accentClasses[index % accentClasses.length]
                       }`}
                     >
                       {item.icon}
-                    </span>
+                    </motion.span>
                   </div>
 
                   <div className={isLeft ? "hidden md:block md:col-start-3" : "hidden md:block md:col-start-1"} />
@@ -61,7 +75,7 @@ export function Education() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

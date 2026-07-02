@@ -1,25 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type TargetAndTransition, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
+import { cardHover, fadeUp } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 export function AnimatedCard({
   children,
   className,
-  delay = 0
+  delay = 0,
+  variants = fadeUp,
+  hover = cardHover
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variants?: Variants;
+  hover?: TargetAndTransition;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      variants={variants}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: false, margin: "-80px" }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -4, scale: 1.02 }}
+      transition={{ delay }}
+      whileHover={hover}
       className={cn(
         "rounded-[24px] border border-[#E5E7EB] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_24px_70px_rgba(49,130,246,0.14)]",
         className
