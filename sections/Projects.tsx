@@ -3,8 +3,6 @@
 import { CalendarDays, LayoutPanelTop, Shirt } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/SectionHeading";
 import { projects } from "@/data/portfolio";
 import { fadeUp, staggerContainer } from "@/lib/motion";
@@ -32,28 +30,49 @@ export function Projects() {
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
+    let cleanup: (() => void) | undefined;
+    let cancelled = false;
 
-    const context = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".project-card");
+    const setupScrollMotion = async () => {
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger")
+      ]);
 
-      gsap.fromTo(
-        cards,
-        { y: 24 },
-        {
-          y: -8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 0.8
+      if (cancelled) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const context = gsap.context(() => {
+        const cards = gsap.utils.toArray<HTMLElement>(".project-card");
+
+        gsap.fromTo(
+          cards,
+          { y: 24 },
+          {
+            y: -8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: root,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.8
+            }
           }
-        }
-      );
-    }, root);
+        );
+      }, root);
 
-    return () => context.revert();
+      cleanup = () => context.revert();
+    };
+
+    void setupScrollMotion();
+
+    return () => {
+      cancelled = true;
+      cleanup?.();
+    };
   }, []);
 
   return (
