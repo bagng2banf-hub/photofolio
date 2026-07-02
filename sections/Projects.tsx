@@ -2,6 +2,9 @@
 
 import { CalendarDays, LayoutPanelTop, Shirt } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/SectionHeading";
 import { projects } from "@/data/portfolio";
 import { fadeUp, staggerContainer } from "@/lib/motion";
@@ -13,8 +16,48 @@ const projectIcons = {
 };
 
 export function Projects() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const root = sectionRef.current;
+
+    if (!root) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+    if (prefersReducedMotion || isMobile) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const context = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>(".project-card");
+
+      gsap.fromTo(
+        cards,
+        { y: 24 },
+        {
+          y: -8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8
+          }
+        }
+      );
+    }, root);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <section id="projects" className="bg-[#F8FAFC] px-5 py-24">
+    <section ref={sectionRef} id="projects" className="bg-[#F8FAFC] px-5 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading number="04" label="프로젝트" title="직접 만들어 본 프로젝트" />
         <motion.div
@@ -32,7 +75,7 @@ export function Projects() {
                 key={project.id}
                 variants={fadeUp}
                 whileHover={{ y: -10, scale: 1.025 }}
-                className={`rounded-[24px] border border-[#E5E7EB] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_28px_78px_rgba(49,130,246,0.16)] ${
+                className={`project-card rounded-[24px] border border-[#E5E7EB] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_28px_78px_rgba(49,130,246,0.16)] ${
                   index === 2 ? "lg:col-span-2" : ""
                 }`}
               >

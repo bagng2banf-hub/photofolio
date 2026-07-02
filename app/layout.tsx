@@ -2,23 +2,23 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { MotionProvider } from "@/components/MotionProvider";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://photofolio.vercel.app"),
   title: {
-    default: "LEE DA YEON | Portfolio",
-    template: "%s | LEE DA YEON"
+    default: "LEE DAYEON | Portfolio",
+    template: "%s | LEE DAYEON"
   },
-  description:
-    "두리중학교에 재학 중인 이다연의 포트폴리오 웹사이트입니다.",
-  keywords: ["LEE DA YEON", "이다연", "포트폴리오", "학생 포트폴리오"],
-  authors: [{ name: "Lee Da Yeon" }],
-  creator: "Lee Da Yeon",
+  description: "두리중학교에 재학 중인 이다연의 포트폴리오 웹사이트입니다.",
+  keywords: ["LEE DAYEON", "이다연", "포트폴리오", "학생 포트폴리오"],
+  authors: [{ name: "Lee Dayeon" }],
+  creator: "Lee Dayeon",
   openGraph: {
-    title: "LEE DA YEON | Portfolio",
+    title: "LEE DAYEON | Portfolio",
     description: "두리중학교에 재학 중인 이다연의 포트폴리오 웹사이트입니다.",
     url: "https://photofolio.vercel.app",
-    siteName: "LEE DA YEON Portfolio",
+    siteName: "LEE DAYEON Portfolio",
     locale: "ko_KR",
     type: "website"
   }
@@ -35,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko">
       <body>
         <MotionProvider>
+          <ScrollProgress />
           <Header />
           {children}
         </MotionProvider>
